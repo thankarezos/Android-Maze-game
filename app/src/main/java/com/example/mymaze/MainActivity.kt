@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity(), GestureDetector.OnGestureListener {
         setContentView(R.layout.activity_main)
         gestureDetector = GestureDetector(this, this)
 
-        ResourcesCompat.getDrawable(resources, R.drawable.welcome, null);
+        ResourcesCompat.getDrawable(resources, R.drawable.welcome, null)
 
         var mMediaPlayer: MediaPlayer? = null
         if (mMediaPlayer == null) {
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity(), GestureDetector.OnGestureListener {
                         finishAffinity()
                     } else {
                         Toast.makeText(this, "Upper swipe", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, MazeActivity2::class.java)
+                        val intent = Intent(this, MazeActivity::class.java)
                         startActivity(intent)
                     }
                 }

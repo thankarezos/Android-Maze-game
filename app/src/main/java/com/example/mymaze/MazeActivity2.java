@@ -16,7 +16,7 @@ import java.util.Random;
 import java.util.Stack;
 
 
-public class MazeActivity2 extends View{
+public class MazeActivity2 extends View {
     private enum Direction{UP, DOWN, RIGHT, LEFT};
     private Walls[][] walls;
     private Walls player, exit;
@@ -40,7 +40,7 @@ public class MazeActivity2 extends View{
 
         random = new Random();
 
-        createMaze();
+//        createMaze();
     }
 
     private void createMaze(){
@@ -146,30 +146,30 @@ public class MazeActivity2 extends View{
         vMargin = (height-ROWS*cellSize)/2;
 
         canvas.translate(hMargin, vMargin);
-        for (int x=0; x<COLS; x++){
-            for (int y=0; x<ROWS; x++){
+//        for (int x=0; x<COLS; x++){
+//            for (int y=0; x<ROWS; x++){
+//
+//                if (walls[x][y].topWall){
+//                    canvas.drawLine(x*cellSize, y*cellSize, (x+1)*cellSize, y*cellSize, wallPaint);
+//                }
+//
+//                if (walls[x][y].leftWall){
+//                    canvas.drawLine(x*cellSize, y*cellSize, x*cellSize, (y+1)*cellSize, wallPaint);
+//                }
+//
+//                if (walls[x][y].bottomWall){
+//                    canvas.drawLine(x*cellSize, (y+1)*cellSize, (x+1)*cellSize, (y+1)*cellSize, wallPaint);
+//                }
+//
+//                if (walls[x][y].rightWall){
+//                    canvas.drawLine((x+1)*cellSize, y*cellSize, (x+1)*cellSize, (y+1)*cellSize, wallPaint);
+//                }
+//            }
+//        }
 
-                if (walls[x][y].topWall){
-                    canvas.drawLine(x*cellSize, y*cellSize, (x+1)*cellSize, y*cellSize, wallPaint);
-                }
-
-                if (walls[x][y].leftWall){
-                    canvas.drawLine(x*cellSize, y*cellSize, x*cellSize, (y+1)*cellSize, wallPaint);
-                }
-
-                if (walls[x][y].bottomWall){
-                    canvas.drawLine(x*cellSize, (y+1)*cellSize, (x+1)*cellSize, (y+1)*cellSize, wallPaint);
-                }
-
-                if (walls[x][y].rightWall){
-                    canvas.drawLine((x+1)*cellSize, y*cellSize, (x+1)*cellSize, (y+1)*cellSize, wallPaint);
-                }
-            }
-        }
-
-        float margin = cellSize/10;
-        canvas.drawRect(player.col*cellSize+margin, player.row*cellSize+margin, (player.col+1)*cellSize-margin, (player.row+1)*cellSize-margin, playerPaint);
-        canvas.drawRect(exit.col*cellSize+margin, exit.row*cellSize+margin, (exit.col+1)*cellSize-margin, (exit.row+1)*cellSize-margin, exitPaint);
+//        float margin = cellSize/10;
+//        canvas.drawRect(player.col*cellSize+margin, player.row*cellSize+margin, (player.col+1)*cellSize-margin, (player.row+1)*cellSize-margin, playerPaint);
+//        canvas.drawRect(exit.col*cellSize+margin, exit.row*cellSize+margin, (exit.col+1)*cellSize-margin, (exit.row+1)*cellSize-margin, exitPaint);
 
     }
 
