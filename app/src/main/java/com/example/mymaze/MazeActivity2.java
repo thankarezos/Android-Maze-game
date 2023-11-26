@@ -40,24 +40,23 @@ public class MazeActivity2 extends View {
 
         random = new Random();
 
-//        createMaze();
+        createMaze();
     }
 
     private void createMaze(){
         Stack<Walls> stack = new Stack<>();
-        
+
         Walls current, next;
         walls = new Walls[COLS][ROWS];
 
-        for (int x=0; x<COLS; x++){
-            for (int y=0; x<ROWS; x++){
-                walls[x][y] = new Walls(x,y);
+        for (int x = 0; x < COLS; x++){
+            for (int y = 0; y < ROWS; y++){ // Fixed the loop condition here
+                walls[x][y] = new Walls(x, y);
             }
         }
 
         player = walls[0][0];
-        exit = walls[COLS-1][ROWS-1];
-
+        exit = walls[COLS - 1][ROWS - 1];
 
         current = walls[0][0];
         current.visited = true;
@@ -136,42 +135,45 @@ public class MazeActivity2 extends View {
         canvas.drawColor(Color.BLUE);
         int width = getWidth();
         int height = getHeight();
-        if (width/height < COLS/ROWS) {
+        if (width / height < COLS / ROWS) {
             cellSize = width / (COLS + 1);
-        }else{
-            cellSize = height/(ROWS+1);
+        } else {
+            cellSize = height / (ROWS + 1);
         }
 
-        hMargin = (width-COLS*cellSize)/2;
-        vMargin = (height-ROWS*cellSize)/2;
+        hMargin = (width - COLS * cellSize) / 2;
+        vMargin = (height - ROWS * cellSize) / 2;
 
         canvas.translate(hMargin, vMargin);
-//        for (int x=0; x<COLS; x++){
-//            for (int y=0; x<ROWS; x++){
-//
-//                if (walls[x][y].topWall){
-//                    canvas.drawLine(x*cellSize, y*cellSize, (x+1)*cellSize, y*cellSize, wallPaint);
-//                }
-//
-//                if (walls[x][y].leftWall){
-//                    canvas.drawLine(x*cellSize, y*cellSize, x*cellSize, (y+1)*cellSize, wallPaint);
-//                }
-//
-//                if (walls[x][y].bottomWall){
-//                    canvas.drawLine(x*cellSize, (y+1)*cellSize, (x+1)*cellSize, (y+1)*cellSize, wallPaint);
-//                }
-//
-//                if (walls[x][y].rightWall){
-//                    canvas.drawLine((x+1)*cellSize, y*cellSize, (x+1)*cellSize, (y+1)*cellSize, wallPaint);
-//                }
-//            }
-//        }
 
-//        float margin = cellSize/10;
-//        canvas.drawRect(player.col*cellSize+margin, player.row*cellSize+margin, (player.col+1)*cellSize-margin, (player.row+1)*cellSize-margin, playerPaint);
-//        canvas.drawRect(exit.col*cellSize+margin, exit.row*cellSize+margin, (exit.col+1)*cellSize-margin, (exit.row+1)*cellSize-margin, exitPaint);
+        if (walls != null && player != null && exit != null) {  // Check for null
+            for (int x = 0; x < COLS; x++) {
+                for (int y = 0; y < ROWS; y++) {  // Corrected loop condition
 
+                    if (walls[x][y].topWall) {
+                        canvas.drawLine(x * cellSize, y * cellSize, (x + 1) * cellSize, y * cellSize, wallPaint);
+                    }
+
+                    if (walls[x][y].leftWall) {
+                        canvas.drawLine(x * cellSize, y * cellSize, x * cellSize, (y + 1) * cellSize, wallPaint);
+                    }
+
+                    if (walls[x][y].bottomWall) {
+                        canvas.drawLine(x * cellSize, (y + 1) * cellSize, (x + 1) * cellSize, (y + 1) * cellSize, wallPaint);
+                    }
+
+                    if (walls[x][y].rightWall) {
+                        canvas.drawLine((x + 1) * cellSize, y * cellSize, (x + 1) * cellSize, (y + 1) * cellSize, wallPaint);
+                    }
+                }
+            }
+
+            float margin = cellSize / 10;
+            canvas.drawRect(player.col * cellSize + margin, player.row * cellSize + margin, (player.col + 1) * cellSize - margin, (player.row + 1) * cellSize - margin, playerPaint);
+            canvas.drawRect(exit.col * cellSize + margin, exit.row * cellSize + margin, (exit.col + 1) * cellSize - margin, (exit.row + 1) * cellSize - margin, exitPaint);
+        }
     }
+
 
     private void checkExit(){
         if (player == exit){createMaze();}
